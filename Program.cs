@@ -13,7 +13,7 @@ Console.WriteLine("Player 1 is X and Player 2 is O");
 Console.WriteLine("Player 1 goes first");
 
 while (!gameOver)
-{   
+{
     // printing the board for them to see and asking player 1 to make their choice
     s.PrintBoard(board);
     Console.WriteLine("Player 1, to place your X, choose a number between 1 and 9: ");
