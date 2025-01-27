@@ -25,41 +25,46 @@ namespace Mission4
 
         public string ValidWinner(string[] arr)
         {
-            // Check rows
+            string winner = "";
+            // check rows
             for (int i = 0; i < 3; i++)
             {
-                if (arr[i * 3] == arr[i * 3 + 1] && arr[i * 3] == arr[i * 3 + 2] && arr[i * 3] != " ")
+                if (arr[i * 3] == arr[i * 3 + 1] && arr[i * 3] == arr[i * 3 + 2])
                 {
-                    return arr[i * 3]; // Return the winner symbol (X or O)
+                    winner = arr[i * 3].ToString();
+                    return winner;
                 }
             }
 
-            // Check columns
+            // check columns
             for (int i = 0; i < 3; i++)
             {
-                if (arr[i] == arr[i + 3] && arr[i + 3] == arr[i + 6] && arr[i] != " ")
+                if (arr[i] == arr[i + 3] && arr[i + 3] == arr[i + 6])
                 {
-                    return arr[i]; // Return the winner symbol (X or O)
+                    winner = arr[i + 3].ToString();
+                    return winner;
                 }
             }
 
-            // Check diagonals
-            if (arr[0] == arr[4] && arr[4] == arr[8] && arr[0] != " ")
+            //check diagonal
+            if (arr[0] == arr[4] && arr[4] == arr[8])
             {
-                return arr[0]; // Return the winner symbol (X or O)
+                winner = arr[4].ToString();
+                return winner;
             }
-            else if (arr[2] == arr[4] && arr[4] == arr[6] && arr[2] != " ")
+            else if (arr[2] == arr[4] && arr[4] == arr[6])
             {
-                return arr[2]; // Return the winner symbol (X or O)
-            }
-
-            // Check for a tie (if no spaces remain and no winner)
-            if (!arr.Contains(" "))
-            {
-                return "Tie"; // All spaces filled and no winner
+                winner = arr[4].ToString();
+                return winner;
             }
 
-            return "No winner, next round"; // Game is still ongoing
+            if (arr.Any(cell => cell != "X" && cell != "O"))
+            {
+                return "Game in progress";  // The game is still ongoing because there are still unmarked spots
+            }
+
+            return "Tie";
+
         }
 
 
