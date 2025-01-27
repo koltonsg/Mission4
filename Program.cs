@@ -44,10 +44,11 @@ while (!gameOver)
     }
 
     // checking for a tie
-    if (s.ValidWinner(board) == "No winner, next round")
+    if (s.ValidWinner(board) == "Tie")
     {
         Console.WriteLine("It's a tie!");
         gameOver = true;
+        break;
     }
 
     while (!valid)
@@ -74,6 +75,7 @@ while (!gameOver)
     {
         Console.WriteLine("Player 2 wins! Good job!");
         gameOver = true;
+        break;
     }
 }
 Console.WriteLine("Thanks for playing!");
