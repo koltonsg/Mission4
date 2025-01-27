@@ -2,6 +2,7 @@
 // Class Support
 // pubic PrintBoard(board) - prints the board to the console
 // public string ValidWinner(board) - checks if there is a winner
+using Mission4;
 
 Support s = new Support();
 string[] board = new string[9] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
