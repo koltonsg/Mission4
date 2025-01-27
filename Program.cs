@@ -2,11 +2,13 @@
 // Class Support
 // pubic PrintBoard(board) - prints the board to the console
 // public string ValidWinner(board) - checks if there is a winner
+using System.ComponentModel.Design;
 using Mission4;
 
 Support s = new Support();
 string[] board = new string[9] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 bool gameOver = false;
+bool valid = true;
 
 Console.WriteLine("Welcome to Tic Tac Toe!");
 Console.WriteLine("Player 1 is X and Player 2 is O");
@@ -20,15 +22,18 @@ while (!gameOver)
     string choice = Console.ReadLine();
 
     // adding player one's choice to the board array
-    if (board.Contains(choice) && int.TryParse(choice, out _))
+    while (valid)
     {
-        board[Array.IndexOf(board, choice)] = "X";
+        if (board.Contains(choice) && int.TryParse(choice, out _))
+        {
+            board[Array.IndexOf(board, choice)] = "X";
+            valid = false;
+        }
+        else
+        {
+            Console.WriteLine("Invalid choice, please try again.");
+        }
     }
-    else
-    {
-        Console.WriteLine("Invalid choice, please try again.");
-    }
-
     // seeing if player 1 has won
     if (s.ValidWinner(board) == "X")
     {
@@ -49,15 +54,18 @@ while (!gameOver)
     choice = Console.ReadLine();
 
     // replacing player two's choice 
-    if (board.Contains(choice) && int.TryParse(choice, out _))
+    while (!valid)
     {
-        board[Array.IndexOf(board, choice)] = "O";
+        if (board.Contains(choice) && int.TryParse(choice, out _))
+        {
+            board[Array.IndexOf(board, choice)] = "O";
+            valid = true;
+        }
+        else
+        {
+            Console.WriteLine("Invalid choice, please try again.");
+        }
     }
-    else
-    {
-        Console.WriteLine("Invalid choice, please try again.");
-    }
-
     // seeing if player 2 wins
     if (s.ValidWinner(board) == "O")
     {
