@@ -40,6 +40,7 @@ while (!gameOver)
     {
         Console.WriteLine("Player 1 wins! Good job!");
         gameOver = true;
+        break;
     }
 
     // checking for a tie
