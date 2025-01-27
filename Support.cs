@@ -25,20 +25,41 @@ namespace Mission4
 
         public string ValidWinner(string[] arr)
         {
-            
-        }
-        
-        public bool CheckRowForWin(char[][] board, int rowIndex)
-        {
-            char firstCell = board[rowIndex][0];
-            if (firstCell == '-') return false;
-
-            for (int col = 1; col < 3; col++)
+            string winner = "";
+            // check rows
+            for (int i = 0; i < 3; i++)
             {
-                if (board[rowIndex][col] != firstCell)
-                    return false;
+                if (arr[i * 3] == arr[i * 3 + 1] && arr[i * 3] == arr[i * 3 + 2])
+                {
+                    winner = arr[i * 3].ToString();
+                    return winner;
+                }
             }
-            return true;
+        
+            // check columns
+            for (int i = 0; i < 3; i++)
+            {
+                if (arr[i] == arr[i + 3] && arr[i + 3] == arr[i + 6])
+                {
+                    winner = arr[i + 3].ToString();
+                    return winner;
+                }
+            }
+        
+            //check diagonal
+            if (arr[0] == arr[4] && arr[4] == arr[8])
+            {
+                winner = arr[4].ToString();
+                return winner;
+            }
+            else if (arr[2] == arr[4] && arr[4] == arr[6])
+            {
+                winner = arr[4].ToString();
+                return winner;
+            }
+
+            return ("No winner, next round");
+            
         }
         
         
