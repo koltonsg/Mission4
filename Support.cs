@@ -25,7 +25,6 @@ namespace Mission4
 
         public string ValidWinner(string[] arr)
         {
-
         }
 
         public bool CheckRowForWin(char[][] board, int rowIndex)
@@ -35,10 +34,27 @@ namespace Mission4
 
             for (int col = 1; col < 3; col++)
             {
-                if (board[rowIndex][col] != firstCell)
-                    return false;
+                if (arr[i] == arr[i + 3] && arr[i + 3] == arr[i + 6])
+                {
+                    winner = arr[i + 3].ToString();
+                    return winner;
+                }
             }
-            return true;
+        
+            //check diagonal
+            if (arr[0] == arr[4] && arr[4] == arr[8])
+            {
+                winner = arr[4].ToString();
+                return winner;
+            }
+            else if (arr[2] == arr[4] && arr[4] == arr[6])
+            {
+                winner = arr[4].ToString();
+                return winner;
+            }
+
+            return ("No winner, next round");
+            
         }
         
         
