@@ -9,6 +9,7 @@ Support s = new Support();
 string[] board = new string[9] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 bool gameOver = false;
 bool valid = true;
+string choice = "";
 
 Console.WriteLine("Welcome to Tic Tac Toe!");
 Console.WriteLine("Player 1 is X and Player 2 is O");
@@ -16,14 +17,14 @@ Console.WriteLine("Player 1 goes first");
 
 while (!gameOver)
 {
-    // printing the board for them to see and asking player 1 to make their choice
-    s.PrintBoard(board);
-    Console.WriteLine("Player 1, to place your X, choose a number between 1 and 9: ");
-    string choice = Console.ReadLine();
-
-    // adding player one's choice to the board array
     while (valid)
     {
+        // printing the board for them to see and asking player 1 to make their choice
+        s.PrintBoard(board);
+        Console.WriteLine("Player 1, to place your X, choose a number between 1 and 9: ");
+        choice = Console.ReadLine();
+
+    // adding player one's choice to the board array
         if (board.Contains(choice) && int.TryParse(choice, out _))
         {
             board[Array.IndexOf(board, choice)] = "X";
@@ -39,6 +40,7 @@ while (!gameOver)
     {
         Console.WriteLine("Player 1 wins! Good job!");
         gameOver = true;
+        break;
     }
 
     // checking for a tie
@@ -48,14 +50,15 @@ while (!gameOver)
         gameOver = true;
     }
 
-    // letting player 2 make their choice
-    s.PrintBoard(board);
-    Console.WriteLine("Player 2, to place your O, choose a number between 1 and 9: ");
-    choice = Console.ReadLine();
-
-    // replacing player two's choice 
     while (!valid)
     {
+        // letting player 2 make their choice
+        s.PrintBoard(board);
+        Console.WriteLine("Player 2, to place your O, choose a number between 1 and 9: ");
+        choice = Console.ReadLine();
+
+    // replacing player two's choice 
+    
         if (board.Contains(choice) && int.TryParse(choice, out _))
         {
             board[Array.IndexOf(board, choice)] = "O";
